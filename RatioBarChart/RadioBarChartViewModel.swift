@@ -43,8 +43,8 @@ class RadioBarChartViewModelImp:
     public var showTopLeftText: Bool {wins != 0}
     public var showTopRighText: Bool {losses != 0}
 
-    public var topSpacerWidth: CGFloat = 0
-    public var bottomSpacerWidth: CGFloat = 0
+    @Published var topSpacerWidth: CGFloat = 0
+    @Published var bottomSpacerWidth: CGFloat = 0
     
     public var topFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     public var bottomFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
@@ -53,7 +53,7 @@ class RadioBarChartViewModelImp:
     func calculateTopSpacerWidth(with parentWidth: CGFloat) {
         let topRightTextWidth = topRightText.sizeUsingFont(usingFont: topFont).width
         var calculation = (parentWidth * loseRatio) - topRightTextWidth
-        if (calculation < 0 || pinToRight(parentWidth)) && neverWon { topSpacerWidth = 0 }
+        if (calculation < 0 || pinToRight(parentWidth)) && !neverWon { topSpacerWidth = 0 }
         if neverWon { calculation -= 8 }
         topSpacerWidth = calculation
     }
@@ -63,6 +63,7 @@ class RadioBarChartViewModelImp:
         if (calculation < 0 || pinToRight(parentWidth)) && !neverWon { bottomSpacerWidth = 0 }
         if neverWon { calculation -= 8 }
         bottomSpacerWidth = calculation
+
     }
     func setTopFont(_ font: UIFont) {self.topFont = font}
     func setBottomFont(_ font: UIFont) {self.bottomFont = font}

@@ -16,6 +16,8 @@ extension Int {
     ///   - calculated percentage
     func percentage(of total: Int) -> Int {
         if total == 0 { return 0 }
-        return Int(Double(self) / Double(total) * 100)
+        let percentage = (Double(self) / Double(total) * 100)
+        if percentage > 50 { return Int(ceil(percentage)) }
+        return Int(percentage)
     }
 }

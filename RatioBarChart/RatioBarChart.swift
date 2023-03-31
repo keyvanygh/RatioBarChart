@@ -54,7 +54,8 @@ struct RatioBarChart<ViewModel>: View where ViewModel: RadioBarChartViewModel {
                     /// -------------------------------------
                     GreenRedLine(
                         geoReader.size.width - 16,
-                        vm: vm)
+                        vm: vm
+                    )
                     /// -------------------------------------
                     // MARK: Buttom Section
                     /// -------------------------------------
@@ -88,13 +89,11 @@ struct RatioBarChart<ViewModel>: View where ViewModel: RadioBarChartViewModel {
             }
         }.frame(height: 60)
     }
-    
-
 }
 
 struct RatioBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        RatioBarChart(vm: RadioBarChartViewModelImp(wins: 10, losses: 10))
+        RatioBarChart(vm: RadioBarChartViewModelImp(wins:10 , losses: 1))
     }
 }
 
