@@ -14,6 +14,18 @@ class RadioBarChartViewModel: ObservableObject {
         return wins + losses
     }
     
+    public var topLeftText: String {
+        return String(describing: wins)
+    }
+    public var topRightText: String {
+        return String(describing: losses)
+    }
+    public var showTopLeftText: Bool {
+        return wins != 0
+    }
+    public var showTopRighText: Bool {
+        return losses != 0
+    }
     public var bottomLeftText: String {
         return "\(wins.percentage(of: total))% Won"
     }
