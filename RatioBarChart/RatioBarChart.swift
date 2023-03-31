@@ -45,7 +45,7 @@ struct RatioBarChart: View {
                         }
 //                        Spacer().frame(width: getTopSpacerWidth(geoReader.size.width - 16))
                     }.padding(.bottom, -2).font(.system(size: 16, weight: .semibold))
-//                    greenRedLine(geoReader.size.width - 16)
+                    greenRedLine(geoReader.size.width - 16)
                     HStack {
                         if vm.showButtomLeftText {
                             Text(vm.bottomLeftText).foregroundColor(.green)
@@ -88,13 +88,17 @@ struct RatioBarChart: View {
             Rectangle()
                 .frame(height: 12)
                 .foregroundColor(.green)
-                .cornerRadius(6, corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-//                .frame(width: width * CGFloat(getPercentage(for: wins, total: wins + losses)) / 100)
+                .cornerRadius(
+                    6,
+                    corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
+                .frame(width: width * CGFloat(vm.winPercentage) / 100)
             Rectangle()
                 .frame(height: 12)
                 .foregroundColor(.red)
-                .cornerRadius(6, corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
-//                .frame(width: width * CGFloat(100 - getPercentage(for: wins, total: wins + losses)) / 100)
+                .cornerRadius(
+                    6,
+                    corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
+                .frame(width: width * CGFloat(vm.losePercentage) / 100)
         }
     }
 }
