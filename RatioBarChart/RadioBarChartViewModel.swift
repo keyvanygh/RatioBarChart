@@ -20,6 +20,12 @@ class RadioBarChartViewModel: ObservableObject {
     public var bottomRightText: String {
         return "\(losses.percentage(of: total))% Lost"
     }
+    public var showButtomLeftText: Bool {
+        return wins != 0
+    }
+    public var showButtomRighText: Bool {
+        return losses != 0
+    }
 
     init(wins: Int, losses: Int) {
         self.wins = wins
