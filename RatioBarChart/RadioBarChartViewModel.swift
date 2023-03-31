@@ -15,10 +15,10 @@ class RadioBarChartViewModel: ObservableObject {
     }
     
     public var bottomLeftText: String {
-        return "\(wins.percentage(of: total)) + % Won"
+        return "\(wins.percentage(of: total))% Won"
     }
     public var bottomRightText: String {
-        return "\(losses.percentage(of: total)) + % Lost"
+        return "\(losses.percentage(of: total))% Lost"
     }
 
     init(wins: Int, losses: Int) {
