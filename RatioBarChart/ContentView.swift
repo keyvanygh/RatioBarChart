@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            RatioBarChart(wins: 15, losses: 10)
+            RatioBarChart(vm: RadioBarChartViewModel(wins: 10, losses: 10))
         }
         .padding()
     }
