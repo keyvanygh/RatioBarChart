@@ -12,6 +12,9 @@ class RadioBarChartViewModel: ObservableObject {
     private let losses:Int
     private var total: Int {wins + losses}
     
+    public var winPercentage: Int {wins.percentage(of: total)}
+    public var losePercentage: Int {losses.percentage(of: total)}
+
     public var neverLost:Bool {losses==0}
     public var neverWon:Bool {wins==0}
 
