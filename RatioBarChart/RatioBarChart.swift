@@ -91,14 +91,14 @@ struct RatioBarChart: View {
                 .cornerRadius(
                     6,
                     corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-                .frame(width: width * CGFloat(vm.winPercentage) / 100)
+                .frame(width: width * CGFloat(vm.winRatio))
             Rectangle()
                 .frame(height: 12)
                 .foregroundColor(.red)
                 .cornerRadius(
                     6,
                     corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
-                .frame(width: width * CGFloat(vm.losePercentage) / 100)
+                .frame(width: width * CGFloat(vm.loseRatio))
         }
     }
 }
