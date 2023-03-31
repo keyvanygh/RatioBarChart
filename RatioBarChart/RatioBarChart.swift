@@ -58,11 +58,6 @@ struct RatioBarChart: View {
         }.frame(height: 60)
     }
     
-    private func getPercentage(for value: Int, total: Int) -> Int {
-        if total <= 0 { return 0 }
-        return Int(Double(value) / Double(total) * 100)
-    }
-    
 //    private func getTopSpacerWidth(_ width: CGFloat) -> CGFloat {
 //        let topRightTextWidth = "\(losses)".sizeUsingFont(usingFont: topFont).width
 //        var calculation = (width * CGFloat(getPercentage(for: losses, total: wins + losses)) / 100) - topRightTextWidth
