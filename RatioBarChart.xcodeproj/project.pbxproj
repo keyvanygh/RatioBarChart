@@ -15,6 +15,7 @@
 		86897BAD29D6813000CEE193 /* RatioBarChartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BAC29D6813000CEE193 /* RatioBarChartUITests.swift */; };
 		86897BAF29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BAE29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift */; };
 		86897BBC29D6814000CEE193 /* RatioBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BBB29D6814000CEE193 /* RatioBarChart.swift */; };
+		C0BB52E529D723C900354436 /* RadioBarChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB52E429D723C900354436 /* RadioBarChartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		86897BAC29D6813000CEE193 /* RatioBarChartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioBarChartUITests.swift; sourceTree = "<group>"; };
 		86897BAE29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioBarChartUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		86897BBB29D6814000CEE193 /* RatioBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioBarChart.swift; sourceTree = "<group>"; };
+		C0BB52E429D723C900354436 /* RadioBarChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioBarChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				86897B9129D6812E00CEE193 /* RatioBarChartApp.swift */,
 				86897B9329D6812E00CEE193 /* ContentView.swift */,
 				86897BBB29D6814000CEE193 /* RatioBarChart.swift */,
+				C0BB52E429D723C900354436 /* RadioBarChartViewModel.swift */,
 				86897B9529D6812F00CEE193 /* Assets.xcassets */,
 				86897B9729D6812F00CEE193 /* Preview Content */,
 			);
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86897B9429D6812E00CEE193 /* ContentView.swift in Sources */,
+				C0BB52E529D723C900354436 /* RadioBarChartViewModel.swift in Sources */,
 				86897B9229D6812E00CEE193 /* RatioBarChartApp.swift in Sources */,
 				86897BBC29D6814000CEE193 /* RatioBarChart.swift in Sources */,
 			);
