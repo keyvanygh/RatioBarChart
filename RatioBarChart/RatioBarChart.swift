@@ -87,24 +87,37 @@ struct RatioBarChart: View {
         }.frame(height: 60)
     }
     
-    private func greenRedLine(_ width: CGFloat) -> some View {
-        return HStack(spacing: 0) {
-            Rectangle()
-                .frame(height: 12)
-                .foregroundColor(.green)
-                .cornerRadius(
-                    6,
-                    corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-                .frame(width: width * CGFloat(vm.winRatio))
-            Rectangle()
-                .frame(height: 12)
-                .foregroundColor(.red)
-                .cornerRadius(
-                    6,
-                    corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
-                .frame(width: width * CGFloat(vm.loseRatio))
+    struct GreenRedLine: View {
+        let width: CGFloat
+        @ObservedObject var vm: RadioBarChartViewModel
+
+        init(_ width: CGFloat,
+             vm: RadioBarChartViewModel
+        ) {
+            self.width = width
+            self.vm = vm
+        }
+        var body: some View {
+
+            HStack(spacing: 0) {
+                Rectangle()
+                    .frame(height: 12)
+                    .foregroundColor(.green)
+                    .cornerRadius(
+                        6,
+                        corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
+                    .frame(width: width * CGFloat(vm.winRatio))
+                Rectangle()
+                    .frame(height: 12)
+                    .foregroundColor(.red)
+                    .cornerRadius(
+                        6,
+                        corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
+                    .frame(width: width * CGFloat(vm.loseRatio))
+            }
         }
     }
+
 }
 
 struct RatioBarChart_Previews: PreviewProvider {
@@ -135,34 +148,3 @@ extension String {
         return self.size(withAttributes: fontAttributes)
     }
 }
-
-//struct GreenRedLine: View {
-//    let width: CGFloat
-//    @ObservedObject var vm: RadioBarChartViewModel
-//
-//    init(_ width: CGFloat,
-//         vm: RadioBarChartViewModel
-//    ) {
-//        self.width = width
-//        self.vm = vm
-//    }
-//    var body: some View {
-//
-//        HStack(spacing: 0) {
-//            Rectangle()
-//                .frame(height: 12)
-//                .foregroundColor(.green)
-//                .cornerRadius(
-//                    6,
-//                    corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-//                .frame(width: width * CGFloat(vm.winRatio))
-//            Rectangle()
-//                .frame(height: 12)
-//                .foregroundColor(.red)
-//                .cornerRadius(
-//                    6,
-//                    corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
-//                .frame(width: width * CGFloat(vm.loseRatio))
-//        }
-//    }
-//}
