@@ -44,13 +44,13 @@ struct RatioBarChart: View {
                     }.padding(.bottom, -2).font(.system(size: 16, weight: .semibold))
 //                    greenRedLine(geoReader.size.width - 16)
                     HStack {
-//                        if wins != 0 {
-//                            Text(self.bottomLeftText).foregroundColor(.green)
-//                        }
-//                        Spacer()
-//                        if losses != 0 {
-//                            Text(self.bottomRightText).foregroundColor(.red).fixedSize()
-//                        }
+                        if vm.showButtomLeftText {
+                            Text(vm.bottomLeftText).foregroundColor(.green)
+                        }
+                        Spacer()
+                        if vm.showButtomRighText {
+                            Text(vm.bottomRightText).foregroundColor(.red).fixedSize()
+                        }
 //                        Spacer().frame(width: getBottomSpacerWidth(geoReader.size.width - 16))
                     }.font(.system(size: 14, weight: .medium))
                 }.padding(.horizontal, 8)
