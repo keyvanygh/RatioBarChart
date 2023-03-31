@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct RatioBarChart: View {
+struct RatioBarChart<ViewModel>: View where ViewModel: RadioBarChartViewModel {
     
-    @StateObject var vm: RadioBarChartViewModel
+    @StateObject var vm: ViewModel
     
     init(
-        vm: RadioBarChartViewModel,
+        vm: ViewModel,
         topFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold),
         bottomFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     ) {
-        vm.topFont = topFont
-        vm.bottomFont = bottomFont
+        vm.inputs.setTopFont(topFont)
+        vm.inputs.setBottomFont(bottomFont)
         _vm = StateObject(wrappedValue: vm)
     }
     
@@ -28,20 +28,20 @@ struct RatioBarChart: View {
                     // MARK: Top Section
                     /// -------------------------------------
                     HStack {
-                        if vm.showTopLeftText {
+                        if vm.outputs.showTopLeftText {
                             /// Top Left Text
-                            Text(vm.topLeftText)
+                            Text(vm.outputs.topLeftText)
                                 .foregroundColor(.green)
                         }
                         Spacer()
-                        if vm.showTopRighText {
+                        if vm.outputs.showTopRighText {
                             /// Top Right Text
-                            Text(vm.topRightText)
+                            Text(vm.outputs.topRightText)
                                 .foregroundColor(.red)
                                 .fixedSize()
                         }
                         Spacer()
-                            .frame(width: vm.topSpacerWidth)
+                            .frame(width: vm.outputs.topSpacerWidth)
                     }
                     .padding(.bottom, -2)
                     .font(
@@ -59,20 +59,20 @@ struct RatioBarChart: View {
                     // MARK: Buttom Section
                     /// -------------------------------------
                     HStack {
-                        if vm.showButtomLeftText {
+                        if vm.outputs.showButtomLeftText {
                             /// Bottom Left Text
-                            Text(vm.bottomLeftText)
+                            Text(vm.outputs.bottomLeftText)
                                 .foregroundColor(.green)
                         }
                         Spacer()
-                        if vm.showButtomRighText {
+                        if vm.outputs.showButtomRighText {
                             /// Bottom Right Text
-                            Text(vm.bottomRightText)
+                            Text(vm.outputs.bottomRightText)
                                 .foregroundColor(.red)
                                 .fixedSize()
                         }
                         Spacer()
-                            .frame(width: vm.bottomSpacerWidth)
+                            .frame(width: vm.outputs.bottomSpacerWidth)
                     }
                     .font(
                         .system(
@@ -82,19 +82,19 @@ struct RatioBarChart: View {
                     /// -------------------------------------
                 }.padding(.horizontal, 8)
                     .onAppear {
-                        vm.calculateTopSpacerWidth(with: geoReader.size.width - 16)
-                        vm.calculateBottomSpacerWidth(with: geoReader.size.width - 16)
+                        vm.inputs.calculateTopSpacerWidth(with: geoReader.size.width - 16)
+                        vm.inputs.calculateBottomSpacerWidth(with: geoReader.size.width - 16)
                     }
             }
         }.frame(height: 60)
     }
     
-    struct GreenRedLine: View {
+    struct GreenRedLine<ViewModel>: View where ViewModel: RadioBarChartViewModel {
         let width: CGFloat
-        @ObservedObject var vm: RadioBarChartViewModel
+        @ObservedObject var vm: ViewModel
 
         init(_ width: CGFloat,
-             vm: RadioBarChartViewModel
+             vm: ViewModel
         ) {
             self.width = width
             self.vm = vm
@@ -107,15 +107,15 @@ struct RatioBarChart: View {
                     .foregroundColor(.green)
                     .cornerRadius(
                         6,
-                        corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-                    .frame(width: width * CGFloat(vm.winRatio))
+                        corners: vm.outputs.neverLost ? .allCorners : [.topLeft, .bottomLeft])
+                    .frame(width: width * CGFloat(vm.outputs.winRatio))
                 Rectangle()
                     .frame(height: 12)
                     .foregroundColor(.red)
                     .cornerRadius(
                         6,
-                        corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
-                    .frame(width: width * CGFloat(vm.loseRatio))
+                        corners: vm.outputs.neverWon ? .allCorners : [.topRight, .bottomRight])
+                    .frame(width: width * CGFloat(vm.outputs.loseRatio))
             }
         }
     }
@@ -123,7 +123,7 @@ struct RatioBarChart: View {
 
 struct RatioBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        RatioBarChart(vm: RadioBarChartViewModel(wins: 4, losses: 10))
+        RatioBarChart(vm: RadioBarChartViewModelImp(wins: 4, losses: 10))
     }
 }
 

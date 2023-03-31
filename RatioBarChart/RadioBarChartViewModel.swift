@@ -8,7 +8,21 @@
 import Foundation
 import UIKit
 
-class RadioBarChartViewModel: ObservableObject {
+class RadioBarChartViewModelImp:
+    RadioBarChartViewModel,
+    RadioBarChartViewModelInputs,
+    RadioBarChartViewModelOutputs {
+    
+    var inputs: RadioBarChartViewModelInputs {self}
+    var outputs: RadioBarChartViewModelOutputs {self}
+    
+    init(wins: Int, losses: Int) {
+        self.wins = wins
+        self.losses = losses
+    }
+    
+    // MARK: - Outputs:
+    
     private let wins:Int
     private let losses:Int
     private var total: Int {wins + losses}
@@ -35,11 +49,7 @@ class RadioBarChartViewModel: ObservableObject {
     public var topFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     public var bottomFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
 
-    init(wins: Int, losses: Int) {
-        self.wins = wins
-        self.losses = losses
-    }
-    
+    // MARK: - Intputs:
     func calculateTopSpacerWidth(with parentWidth: CGFloat) {
         let topRightTextWidth = topRightText.sizeUsingFont(usingFont: topFont).width
         var calculation = (parentWidth * loseRatio) - topRightTextWidth
@@ -54,10 +64,49 @@ class RadioBarChartViewModel: ObservableObject {
         if neverWon { calculation -= 8 }
         bottomSpacerWidth = calculation
     }
+    func setTopFont(_ font: UIFont) {self.topFont = font}
+    func setBottomFont(_ font: UIFont) {self.bottomFont = font}
     
     private func pinToRight(_ width: CGFloat) -> Bool {
         let bottomLeftTextWidth = bottomLeftText.sizeUsingFont(usingFont: bottomFont).width
         let calculation = (width * loseRatio)
         return width < calculation + bottomLeftTextWidth + 8
     }
+}
+
+protocol RadioBarChartViewModelInputs {
+    func calculateTopSpacerWidth(with parentWidth: CGFloat)
+    func calculateBottomSpacerWidth(with parentWidth: CGFloat)
+    func setTopFont(_ font: UIFont)
+    func setBottomFont(_ font: UIFont)
+
+}
+
+protocol RadioBarChartViewModelOutputs {
+    var winRatio: CGFloat { get }
+    var loseRatio: CGFloat { get }
+
+    var neverLost:Bool { get }
+    var neverWon:Bool { get }
+
+    var topLeftText: String { get }
+    var topRightText: String { get }
+    var bottomLeftText: String { get }
+    var bottomRightText: String { get }
+    
+    var showButtomLeftText: Bool { get }
+    var showButtomRighText: Bool { get }
+    var showTopLeftText: Bool { get }
+    var showTopRighText: Bool { get }
+
+    var topSpacerWidth: CGFloat { get }
+    var bottomSpacerWidth: CGFloat { get }
+    
+    var topFont: UIFont { get }
+    var bottomFont: UIFont { get }
+}
+
+protocol RadioBarChartViewModel:AnyViewModel {
+    var inputs:RadioBarChartViewModelInputs { get }
+    var outputs: RadioBarChartViewModelOutputs { get }
 }

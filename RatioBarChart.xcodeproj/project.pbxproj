@@ -18,6 +18,7 @@
 		C0B1DD7C29D7769E0026D27C /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1DD7B29D7769E0026D27C /* String+extension.swift */; };
 		C0B1DD7E29D777210026D27C /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1DD7D29D777210026D27C /* RoundedCorner.swift */; };
 		C0B1DD8029D777A20026D27C /* View+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1DD7F29D777A20026D27C /* View+extension.swift */; };
+		C0B1DD8329D77B2B0026D27C /* AnyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B1DD8229D77B2B0026D27C /* AnyViewModel.swift */; };
 		C0BB52E529D723C900354436 /* RadioBarChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB52E429D723C900354436 /* RadioBarChartViewModel.swift */; };
 		C0BB52EA29D745C100354436 /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB52E929D745C100354436 /* Int+extension.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		C0B1DD7B29D7769E0026D27C /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		C0B1DD7D29D777210026D27C /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C0B1DD7F29D777A20026D27C /* View+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extension.swift"; sourceTree = "<group>"; };
+		C0B1DD8229D77B2B0026D27C /* AnyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModel.swift; sourceTree = "<group>"; };
 		C0BB52E429D723C900354436 /* RadioBarChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioBarChartViewModel.swift; sourceTree = "<group>"; };
 		C0BB52E929D745C100354436 /* Int+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				C0B1DD7B29D7769E0026D27C /* String+extension.swift */,
 				C0B1DD7D29D777210026D27C /* RoundedCorner.swift */,
 				C0B1DD7F29D777A20026D27C /* View+extension.swift */,
+				C0B1DD8229D77B2B0026D27C /* AnyViewModel.swift */,
 			);
 			path = RatioBarChart;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			files = (
 				86897B9429D6812E00CEE193 /* ContentView.swift in Sources */,
 				C0BB52E529D723C900354436 /* RadioBarChartViewModel.swift in Sources */,
+				C0B1DD8329D77B2B0026D27C /* AnyViewModel.swift in Sources */,
 				C0B1DD8029D777A20026D27C /* View+extension.swift in Sources */,
 				C0B1DD7C29D7769E0026D27C /* String+extension.swift in Sources */,
 				C0BB52EA29D745C100354436 /* Int+extension.swift in Sources */,
