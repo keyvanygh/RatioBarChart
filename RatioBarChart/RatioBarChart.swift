@@ -75,7 +75,7 @@ struct RatioBarChart: View {
     
     private func pinToRight(_ width: CGFloat) -> Bool {
         let bottomLeftTextWidth = vm.bottomLeftText.sizeUsingFont(usingFont: bottomFont).width
-        let calculation = (width * vm.winRatio)
+        let calculation = (width * vm.loseRatio)
         return width < calculation + bottomLeftTextWidth + 8
     }
     
