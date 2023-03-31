@@ -11,17 +11,14 @@ struct RatioBarChart: View {
     
     @StateObject var vm: RadioBarChartViewModel
     
-    let topFont: UIFont
-    let bottomFont: UIFont
-
     init(
         vm: RadioBarChartViewModel,
         topFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold),
         bottomFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     ) {
+        vm.topFont = topFont
+        vm.bottomFont = bottomFont
         _vm = StateObject(wrappedValue: vm)
-        self.topFont = topFont
-        self.bottomFont = bottomFont
     }
     
     var body: some View {
@@ -44,7 +41,7 @@ struct RatioBarChart: View {
                                 .fixedSize()
                         }
                         Spacer()
-                            .frame(width: getTopSpacerWidth(geoReader.size.width - 16))
+                            .frame(width: vm.topSpacerWidth)
                     }
                     .padding(.bottom, -2)
                     .font(
@@ -73,7 +70,7 @@ struct RatioBarChart: View {
                                 .fixedSize()
                         }
                         Spacer()
-                            .frame(width: getBottomSpacerWidth(geoReader.size.width - 16))
+                            .frame(width: vm.bottomSpacerWidth)
                     }
                     .font(
                         .system(
@@ -82,30 +79,12 @@ struct RatioBarChart: View {
                     )
                     /// -------------------------------------
                 }.padding(.horizontal, 8)
+                    .onAppear {
+                        vm.calculateTopSpacerWidth(with: geoReader.size.width - 16)
+                        vm.calculateBottomSpacerWidth(with: geoReader.size.width - 16)
+                    }
             }
         }.frame(height: 60)
-    }
-    
-    private func getTopSpacerWidth(_ width: CGFloat) -> CGFloat {
-        let topRightTextWidth = vm.topRightText.sizeUsingFont(usingFont: topFont).width
-        var calculation = (width * vm.loseRatio) - topRightTextWidth
-        if (calculation < 0 || pinToRight(width)) && !vm.neverWon { return 0 }
-        if vm.neverWon { calculation -= 8 }
-        return calculation
-    }
-    
-    private func getBottomSpacerWidth(_ width: CGFloat) -> CGFloat {
-        let bottomRightTextWidth = vm.bottomRightText.sizeUsingFont(usingFont: bottomFont).width
-        var calculation = (width * vm.loseRatio) - bottomRightTextWidth
-        if (calculation < 0 || pinToRight(width)) && !vm.neverWon { return 0 }
-        if vm.neverWon { calculation -= 8 }
-        return calculation
-    }
-    
-    private func pinToRight(_ width: CGFloat) -> Bool {
-        let bottomLeftTextWidth = vm.bottomLeftText.sizeUsingFont(usingFont: bottomFont).width
-        let calculation = (width * vm.loseRatio)
-        return width < calculation + bottomLeftTextWidth + 8
     }
     
     private func greenRedLine(_ width: CGFloat) -> some View {
@@ -151,7 +130,7 @@ struct RoundedCorner: Shape {
 }
 
 extension String {
-   func sizeUsingFont(usingFont font: UIFont) -> CGSize {
+    func sizeUsingFont(usingFont font: UIFont) -> CGSize {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
