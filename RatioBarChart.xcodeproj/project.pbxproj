@@ -14,7 +14,7 @@
 		86897BA329D6812F00CEE193 /* RatioBarChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BA229D6812F00CEE193 /* RatioBarChartTests.swift */; };
 		86897BAD29D6813000CEE193 /* RatioBarChartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BAC29D6813000CEE193 /* RatioBarChartUITests.swift */; };
 		86897BAF29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BAE29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift */; };
-		86897BBC29D6814000CEE193 /* RatioSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BBB29D6814000CEE193 /* RatioSection.swift */; };
+		86897BBC29D6814000CEE193 /* RatioBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86897BBB29D6814000CEE193 /* RatioBarChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		86897BA829D6813000CEE193 /* RatioBarChartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RatioBarChartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86897BAC29D6813000CEE193 /* RatioBarChartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioBarChartUITests.swift; sourceTree = "<group>"; };
 		86897BAE29D6813000CEE193 /* RatioBarChartUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioBarChartUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		86897BBB29D6814000CEE193 /* RatioSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioSection.swift; sourceTree = "<group>"; };
+		86897BBB29D6814000CEE193 /* RatioBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatioBarChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			children = (
 				86897B9129D6812E00CEE193 /* RatioBarChartApp.swift */,
 				86897B9329D6812E00CEE193 /* ContentView.swift */,
-				86897BBB29D6814000CEE193 /* RatioSection.swift */,
+				86897BBB29D6814000CEE193 /* RatioBarChart.swift */,
 				86897B9529D6812F00CEE193 /* Assets.xcassets */,
 				86897B9729D6812F00CEE193 /* Preview Content */,
 			);
@@ -262,7 +262,7 @@
 			files = (
 				86897B9429D6812E00CEE193 /* ContentView.swift in Sources */,
 				86897B9229D6812E00CEE193 /* RatioBarChartApp.swift in Sources */,
-				86897BBC29D6814000CEE193 /* RatioSection.swift in Sources */,
+				86897BBC29D6814000CEE193 /* RatioBarChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
