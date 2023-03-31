@@ -28,30 +28,59 @@ struct RatioBarChart: View {
         Section {
             GeometryReader { geoReader in
                 VStack {
+                    // MARK: Top Section
+                    /// -------------------------------------
                     HStack {
                         if vm.showTopLeftText {
+                            /// Top Left Text
                             Text(vm.topLeftText)
                                 .foregroundColor(.green)
                         }
                         Spacer()
                         if vm.showTopRighText {
+                            /// Top Right Text
                             Text(vm.topRightText)
                                 .foregroundColor(.red)
                                 .fixedSize()
                         }
-                        Spacer().frame(width: getTopSpacerWidth(geoReader.size.width - 16))
-                    }.padding(.bottom, -2).font(.system(size: 16, weight: .semibold))
+                        Spacer()
+                            .frame(width: getTopSpacerWidth(geoReader.size.width - 16))
+                    }
+                    .padding(.bottom, -2)
+                    .font(
+                        .system(
+                            size: 16,
+                            weight: .semibold)
+                    )
+                    /// -------------------------------------
+                    // MARK: Middle Section
+                    /// -------------------------------------
                     greenRedLine(geoReader.size.width - 16)
+                    /// -------------------------------------
+                    // MARK: Buttom Section
+                    /// -------------------------------------
                     HStack {
                         if vm.showButtomLeftText {
-                            Text(vm.bottomLeftText).foregroundColor(.green)
+                            /// Bottom Left Text
+                            Text(vm.bottomLeftText)
+                                .foregroundColor(.green)
                         }
                         Spacer()
                         if vm.showButtomRighText {
-                            Text(vm.bottomRightText).foregroundColor(.red).fixedSize()
+                            /// Bottom Right Text
+                            Text(vm.bottomRightText)
+                                .foregroundColor(.red)
+                                .fixedSize()
                         }
-                        Spacer().frame(width: getBottomSpacerWidth(geoReader.size.width - 16))
-                    }.font(.system(size: 14, weight: .medium))
+                        Spacer()
+                            .frame(width: getBottomSpacerWidth(geoReader.size.width - 16))
+                    }
+                    .font(
+                        .system(
+                            size: 14,
+                            weight: .medium)
+                    )
+                    /// -------------------------------------
                 }.padding(.horizontal, 8)
             }
         }.frame(height: 60)
@@ -127,3 +156,34 @@ extension String {
         return self.size(withAttributes: fontAttributes)
     }
 }
+
+//struct GreenRedLine: View {
+//    let width: CGFloat
+//    @ObservedObject var vm: RadioBarChartViewModel
+//
+//    init(_ width: CGFloat,
+//         vm: RadioBarChartViewModel
+//    ) {
+//        self.width = width
+//        self.vm = vm
+//    }
+//    var body: some View {
+//
+//        HStack(spacing: 0) {
+//            Rectangle()
+//                .frame(height: 12)
+//                .foregroundColor(.green)
+//                .cornerRadius(
+//                    6,
+//                    corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
+//                .frame(width: width * CGFloat(vm.winRatio))
+//            Rectangle()
+//                .frame(height: 12)
+//                .foregroundColor(.red)
+//                .cornerRadius(
+//                    6,
+//                    corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
+//                .frame(width: width * CGFloat(vm.loseRatio))
+//        }
+//    }
+//}
