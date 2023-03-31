@@ -8,9 +8,19 @@
 import Foundation
 
 class RadioBarChartViewModel: ObservableObject {
-    let wins:Int
-    let losses:Int
+    private let wins:Int
+    private let losses:Int
+    private var total: Int {
+        return wins + losses
+    }
     
+    public var bottomLeftText: String {
+        return "\(wins.percentage(of: total)) + % Won"
+    }
+    public var bottomRightText: String {
+        return "\(losses.percentage(of: total)) + % Lost"
+    }
+
     init(wins: Int, losses: Int) {
         self.wins = wins
         self.losses = losses
