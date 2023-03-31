@@ -52,7 +52,9 @@ struct RatioBarChart: View {
                     /// -------------------------------------
                     // MARK: Middle Section
                     /// -------------------------------------
-                    greenRedLine(geoReader.size.width - 16)
+                    GreenRedLine(
+                        geoReader.size.width - 16,
+                        vm: vm)
                     /// -------------------------------------
                     // MARK: Buttom Section
                     /// -------------------------------------
