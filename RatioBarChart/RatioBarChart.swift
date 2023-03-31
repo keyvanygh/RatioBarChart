@@ -102,7 +102,7 @@ struct RatioBarChart: View {
 
 struct RatioBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        RatioBarChart(wins: 29, losses: 14)
+        RatioBarChart(wins: 90, losses: 14)
     }
 }
 
