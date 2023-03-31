@@ -10,34 +10,17 @@ import Foundation
 class RadioBarChartViewModel: ObservableObject {
     private let wins:Int
     private let losses:Int
-    private var total: Int {
-        return wins + losses
-    }
+    private var total: Int {wins + losses}
     
-    public var topLeftText: String {
-        return String(describing: wins)
-    }
-    public var topRightText: String {
-        return String(describing: losses)
-    }
-    public var showTopLeftText: Bool {
-        return wins != 0
-    }
-    public var showTopRighText: Bool {
-        return losses != 0
-    }
-    public var bottomLeftText: String {
-        return "\(wins.percentage(of: total))% Won"
-    }
-    public var bottomRightText: String {
-        return "\(losses.percentage(of: total))% Lost"
-    }
-    public var showButtomLeftText: Bool {
-        return wins != 0
-    }
-    public var showButtomRighText: Bool {
-        return losses != 0
-    }
+    public var topLeftText: String {String(describing: wins)}
+    public var topRightText: String {String(describing: losses)}
+    public var bottomLeftText: String {"\(wins.percentage(of: total))% Won"}
+    public var bottomRightText: String {"\(losses.percentage(of: total))% Lost"}
+    
+    public var showButtomLeftText: Bool {wins != 0}
+    public var showButtomRighText: Bool {losses != 0}
+    public var showTopLeftText: Bool {wins != 0}
+    public var showTopRighText: Bool {losses != 0}
 
     init(wins: Int, losses: Int) {
         self.wins = wins
