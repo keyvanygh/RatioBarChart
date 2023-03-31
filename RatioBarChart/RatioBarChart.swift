@@ -83,20 +83,20 @@ struct RatioBarChart: View {
 //        return width < calculation + bottomLeftTextWidth + 8
 //    }
     
-//    private func greenRedLine(_ width: CGFloat) -> some View {
-//        return HStack(spacing: 0) {
-//            Rectangle()
-//                .frame(height: 12)
-//                .foregroundColor(.green)
-//                .cornerRadius(6, corners: losses == 0 ? .allCorners : [.topLeft, .bottomLeft])
+    private func greenRedLine(_ width: CGFloat) -> some View {
+        return HStack(spacing: 0) {
+            Rectangle()
+                .frame(height: 12)
+                .foregroundColor(.green)
+                .cornerRadius(6, corners: vm.neverLost ? .allCorners : [.topLeft, .bottomLeft])
 //                .frame(width: width * CGFloat(getPercentage(for: wins, total: wins + losses)) / 100)
-//            Rectangle()
-//                .frame(height: 12)
-//                .foregroundColor(.red)
-//                .cornerRadius(6, corners: wins == 0 ? .allCorners : [.topRight, .bottomRight])
+            Rectangle()
+                .frame(height: 12)
+                .foregroundColor(.red)
+                .cornerRadius(6, corners: vm.neverWon ? .allCorners : [.topRight, .bottomRight])
 //                .frame(width: width * CGFloat(100 - getPercentage(for: wins, total: wins + losses)) / 100)
-//        }
-//    }
+        }
+    }
 }
 
 struct RatioBarChart_Previews: PreviewProvider {
