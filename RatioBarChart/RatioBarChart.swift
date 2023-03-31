@@ -33,13 +33,16 @@ struct RatioBarChart: View {
             GeometryReader { geoReader in
                 VStack {
                     HStack {
-//                        if wins != 0 {
-//                            Text("\(wins)").foregroundColor(.green)
-//                        }
-//                        Spacer()
-//                        if losses != 0 {
-//                            Text("\(losses)").foregroundColor(.red).fixedSize()
-//                        }
+                        if vm.showTopLeftText {
+                            Text(vm.topLeftText)
+                                .foregroundColor(.green)
+                        }
+                        Spacer()
+                        if vm.showTopRighText {
+                            Text(vm.topRightText)
+                                .foregroundColor(.red)
+                                .fixedSize()
+                        }
 //                        Spacer().frame(width: getTopSpacerWidth(geoReader.size.width - 16))
                     }.padding(.bottom, -2).font(.system(size: 16, weight: .semibold))
 //                    greenRedLine(geoReader.size.width - 16)
