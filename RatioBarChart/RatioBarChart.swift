@@ -16,9 +16,9 @@ struct RatioBarChart<ViewModel>: View where ViewModel: RadioBarChartViewModel {
         topFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold),
         bottomFont: UIFont = UIFont.systemFont(ofSize: 14, weight: .medium)
     ) {
-        vm.inputs.setTopFont(topFont)
-        vm.inputs.setBottomFont(bottomFont)
-        _vm = StateObject(wrappedValue: vm)
+        self._vm = StateObject(wrappedValue: vm)
+        self.vm.inputs.setTopFont(topFont)
+        self.vm.inputs.setBottomFont(bottomFont)
     }
     
     var body: some View {
@@ -89,41 +89,42 @@ struct RatioBarChart<ViewModel>: View where ViewModel: RadioBarChartViewModel {
         }.frame(height: 60)
     }
     
-    struct GreenRedLine<ViewModel>: View where ViewModel: RadioBarChartViewModel {
-        let width: CGFloat
-        @ObservedObject var vm: ViewModel
 
-        init(_ width: CGFloat,
-             vm: ViewModel
-        ) {
-            self.width = width
-            self.vm = vm
-        }
-        var body: some View {
-
-            HStack(spacing: 0) {
-                Rectangle()
-                    .frame(height: 12)
-                    .foregroundColor(.green)
-                    .cornerRadius(
-                        6,
-                        corners: vm.outputs.neverLost ? .allCorners : [.topLeft, .bottomLeft])
-                    .frame(width: width * CGFloat(vm.outputs.winRatio))
-                Rectangle()
-                    .frame(height: 12)
-                    .foregroundColor(.red)
-                    .cornerRadius(
-                        6,
-                        corners: vm.outputs.neverWon ? .allCorners : [.topRight, .bottomRight])
-                    .frame(width: width * CGFloat(vm.outputs.loseRatio))
-            }
-        }
-    }
 }
 
 struct RatioBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        RatioBarChart(vm: RadioBarChartViewModelImp(wins: 4, losses: 10))
+        RatioBarChart(vm: RadioBarChartViewModelImp(wins: 10, losses: 10))
     }
 }
 
+struct GreenRedLine<ViewModel>: View where ViewModel: RadioBarChartViewModel {
+    let width: CGFloat
+    @ObservedObject var vm: ViewModel
+
+    init(_ width: CGFloat,
+         vm: ViewModel
+    ) {
+        self.width = width
+        self._vm = ObservedObject(wrappedValue: vm)
+    }
+    var body: some View {
+
+        HStack(spacing: 0) {
+            Rectangle()
+                .frame(height: 12)
+                .foregroundColor(.green)
+                .cornerRadius(
+                    6,
+                    corners: vm.outputs.neverLost ? .allCorners : [.topLeft, .bottomLeft])
+                .frame(width: width * CGFloat(vm.outputs.winRatio))
+            Rectangle()
+                .frame(height: 12)
+                .foregroundColor(.red)
+                .cornerRadius(
+                    6,
+                    corners: vm.outputs.neverWon ? .allCorners : [.topRight, .bottomRight])
+                .frame(width: width * CGFloat(vm.outputs.loseRatio))
+        }
+    }
+}
