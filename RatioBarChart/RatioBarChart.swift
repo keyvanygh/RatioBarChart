@@ -129,10 +129,3 @@ extension String {
         return self.size(withAttributes: fontAttributes)
     }
 }
-
-struct HelperFunctions {
-    static func getPercentage(for value: Int, total: Int) -> Int {
-        if total == 0 { return 0 }
-        return Int(Double(value) / Double(total) * 100)
-    }
-}
